@@ -1,24 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ItemList from './components/ItemList';
 
 function App() {
+  const listItems = ["Item1", "Item2", "Item3"];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        listItems.map((item, index) => {
+          return <ItemList key={index} title={item}/>
+        })
+      }
     </div>
   );
 }
