@@ -1,0 +1,44 @@
+.underline {
+    text-decoration: line-through
+}
+
+.ItemList {
+    border-bottom: 1px solid rgb(0 0 0 / 31%);
+    display: flex;
+    padding: 10px 5px;
+    color: #414144
+}
+
+.ItemList .image, .cancleImage {
+    width: 32px;
+    height: 32px;
+}
+
+.ItemList:hover .cancleImage{
+    display: block;
+}
+
+.ItemList span {
+    width: 100%;
+}
+
+.ItemList .titleItem{
+    font-size: 24px;
+    padding-left: 2px;
+    margin-left: 16px;
+}
+
+.blurImage {
+    opacity: 0.5;
+    color: #ddd;
+}
+
+.isComlete {
+    text-decoration: line-through;
+    color: #ddd;
+}
+
+.cancleImage {
+    display: none;
+}
+

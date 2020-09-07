@@ -1,0 +1,9 @@
+.buttonFilter {
+    margin-left: 4px;
+}
+.buttonFilter:hover{
+    outline: 1px solid #ddd;
+}
+.buttonFilter:focus {
+    outline: 1px solid #ddd;
+}   
