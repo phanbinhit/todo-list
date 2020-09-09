@@ -129,37 +129,36 @@ class App extends Component {
   countFilter(event) {
     let value = parseInt(event.target.value);
     const todos = this.state.todos;
-    switch(value) {
-      case 1:
-        this.setState({
-          todos: todos.filter((item) => !item.isComlete)
-        });
-        break;
-      case 2:
-        this.setState({
-          todos: todos.filter((item) => item.isComlete)
-        });
-        break;
-      default:
-        this.setState({
-          todos: todos
-        });
-        break;
-    } 
+    this.setState({
+      currentFilter: value
+    })
   }
 
   render() {
+    const { todos, inputTitle, countItemLeft, currentFilter } = this.state;
+    let todoList;
+    if (currentFilter === ALL ) {
+      todoList = todos;
+    } else if (currentFilter === ACTIVE) {
+      todoList = todos.filter((item) => {
+        return !item.isComlete
+      })
+    } else {
+      todoList = todos.filter((item) => {
+        return item.isComlete
+      })
+    }
     return (
       <div className="App">
         <Input 
           onKeyUp={this.enterItem} 
-          value={this.state.inputTitle} 
+          value={inputTitle} 
           onChange={this.onChange}
           onClick={this.completeAll}
         />
         <div className="main">
           {
-            this.state.todos.map((item, index) => {
+            todoList.map((item, index) => {
               return (
                   <ItemList 
                     key={index} 
@@ -174,7 +173,7 @@ class App extends Component {
           }
         </div>
         <div className='footer'>
-          <span>{this.state.countItemLeft.bind(this)()} item left</span>
+          <span>{countItemLeft.bind(this)()} item left</span>
           <div>
             <Filter onClick={this.countFilter} buttonValue="All" dataFilter={ALL}></Filter>
             <Filter onClick={this.countFilter} buttonValue="Active" dataFilter={ACTIVE}></Filter>
